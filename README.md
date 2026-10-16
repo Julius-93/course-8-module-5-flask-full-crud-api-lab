@@ -171,3 +171,168 @@ After completing this lab, you will:
 ✅ Return proper HTTP status codes and structured responses  
 
 This is a critical step in your backend developer journey. Next up: persistent databases!
+
+
+# Flask Full CRUD RESTful API
+
+## Project Overview
+
+This project is a RESTful API developed using Python and Flask. It provides functionality for creating, retrieving, updating, and deleting events.
+
+The application demonstrates fundamental backend development concepts, including HTTP methods, request processing, JSON serialization, input validation, error handling, and CRUD operations.
+
+The project was developed as part of the Moringa School Full Stack Software Engineering programme.
+
+## Technologies Used
+
+* Python 3.11
+* Flask
+* Pipenv
+* Pytest
+* Git and GitHub
+* RESTful APIs
+* JSON
+
+## Project Objectives
+
+The objectives of this project are to:
+
+1. Implement RESTful API endpoints using Flask.
+2. Process incoming JSON requests.
+3. Simulate database operations using Python objects.
+4. Implement POST, GET, PATCH, and DELETE methods.
+5. Validate incoming data.
+6. Handle missing resources appropriately.
+7. Write testable and maintainable backend code.
+
+## API Endpoints
+
+| HTTP Method | Endpoint       | Description               |
+| ----------- | -------------- | ------------------------- |
+| GET         | `/events`      | Retrieve all events       |
+| GET         | `/events/<id>` | Retrieve a specific event |
+| POST        | `/events`      | Create a new event        |
+| PATCH       | `/events/<id>` | Update an existing event  |
+| DELETE      | `/events/<id>` | Delete an existing event  |
+
+The GET endpoints are optional extensions to the original lab requirements.
+
+## Installation
+
+Clone your fork of the repository and navigate into the project directory.
+
+Install the project dependencies:
+
+`pipenv install`
+
+## Running the Application
+
+Start the Flask development server:
+
+`pipenv run python app.py`
+
+The application will be accessible at:
+
+`http://127.0.0.1:5000`
+
+## Example API Request
+
+### Creating an Event
+
+**Endpoint:** POST `/events`
+
+Request body:
+
+```json
+{
+  "title": "Python Workshop"
+}
+```
+
+Successful response:
+
+```json
+{
+  "id": 3,
+  "title": "Python Workshop"
+}
+```
+
+HTTP Status: `201 Created`
+
+### Updating an Event
+
+**Endpoint:** PATCH `/events/1`
+
+Request body:
+
+```json
+{
+  "title": "Advanced Python Workshop"
+}
+```
+
+HTTP Status: `200 OK`
+
+### Deleting an Event
+
+**Endpoint:** DELETE `/events/2`
+
+HTTP Status: `204 No Content`
+
+## Error Handling
+
+The API handles invalid requests using standard HTTP status codes.
+
+| Status Code | Meaning                        |
+| ----------- | ------------------------------ |
+| 200         | Request processed successfully |
+| 201         | Resource created successfully  |
+| 204         | Resource deleted successfully  |
+| 400         | Invalid request data           |
+| 404         | Requested resource not found   |
+
+## Testing
+
+The application uses Pytest for automated testing.
+
+Run the test suite using:
+
+`pipenv run python -m pytest -v`
+
+The original lab includes five automated tests covering event creation, updating, deletion, and handling nonexistent events.
+
+## Project Structure
+
+```text
+course-8-module-5-flask-full-crud-api-lab/
+├── tests/
+│   └── test_app.py
+├── app.py
+├── Pipfile
+├── Pipfile.lock
+├── pytest.ini
+└── README.md
+```
+
+## Design Considerations
+
+**Input Validation:** The API checks that event titles are valid, non-empty strings before creating or updating events.
+
+**Error Handling:** Requests involving nonexistent resources return HTTP 404 responses.
+
+**Code Reusability:** Helper functions are used to locate events and validate incoming data, reducing unnecessary duplication.
+
+**Data Storage:** Events are stored in an in-memory Python list. This simulates basic database operations without requiring a database server.
+
+**Maintainability:** The application uses clearly separated functions, consistent naming conventions, and explanatory comments.
+
+## Limitations and Future Improvements
+
+The current application uses in-memory storage, meaning data is lost when the application restarts.
+
+Potential improvements include integrating PostgreSQL or SQLite, adding authentication, implementing pagination, expanding automated tests, and organizing the application using Flask Blueprints.
+
+## Conclusion
+
+This project demonstrates the implementation of a RESTful API using Flask. It provides practical experience with HTTP methods, JSON processing, CRUD operations, data validation, error handling, and automated testing.
